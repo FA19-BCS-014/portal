@@ -26,8 +26,8 @@ SECRET_KEY = 'n7r=7ij#-(29vflm0ifr=ucrg$mfkl!#3*_pvsuv!w*$jpzj8&'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
-CORS_ORIGIN_ALLOW_ALL = True
+#
+# CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
