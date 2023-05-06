@@ -29,7 +29,7 @@ class UserAuthView(ModelViewSet):
                     data['token'] = encode_token(user[0])
                     data['first_name'] = user[0].first_name
                     data['last_name'] = user[0].last_name
-                    data['user_type'] = user[0].user_type
+                    data['user_type'] = int(user[0].user_type)
                     data["username"] = user[0].username
                     user[0].last_login = timezone.now()
                     user[0].login_token = data['token']
