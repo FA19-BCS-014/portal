@@ -22,7 +22,7 @@ urlpatterns = [
         "get" : "get_job"
     })),
 
-    path('get-jobs', views.JobApiViewView.as_view({
+    path('get-jobs', views.JobApiView.as_view({
         "get" : "get_job"
     })),
 ]
