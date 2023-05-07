@@ -18,6 +18,6 @@ from django.urls import path
 from . import views
 urlpatterns = [
     path('', views.JobView.as_view({
-        "post": "signup"
+        "post": "create_job"
     })),
 ]

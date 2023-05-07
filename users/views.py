@@ -27,6 +27,7 @@ class UserAuthView(ModelViewSet):
                     data = serialized_data.data
                     data.pop('password')
                     data['token'] = encode_token(user[0])
+                    data['id'] = user[0].id
                     data['first_name'] = user[0].first_name
                     data['last_name'] = user[0].last_name
                     data['user_type'] = int(user[0].user_type)
