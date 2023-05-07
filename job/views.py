@@ -46,7 +46,7 @@ class JobView(ModelViewSet):
 
 
 class JobApiView(ModelViewSet):
-    authentication_classes = [UserAuthentication]
+    authentication_classes = []
     permission_classes = [AllowAny]
     model = Job
 
