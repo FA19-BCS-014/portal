@@ -21,4 +21,8 @@ urlpatterns = [
         "post": "create_job",
         "get" : "get_job"
     })),
+
+    path('get-jobs', views.JobApiViewView.as_view({
+        "get" : "get_job"
+    })),
 ]
