@@ -28,5 +28,19 @@ class JobView(ModelViewSet):
             return Response(create_response(True, Message.server_error.value, []))
 
 
+    def get_job(self, request):
+        try:
+            jobs = request.user.posted_jobs.all()
+            if jobs.exists():
+                serialized_data = JobSerializer(jobs, many=True).data
+                return Response(create_response(False, Message.success.value, serialized_data))
+
+            return Response(create_response(True, Message.record_not_found.value, []))
+
+        except Exception as e:
+            print(e)
+            return Response(create_response(True, Message.server_error.value, []))
+
+
 
 

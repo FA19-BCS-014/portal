@@ -18,6 +18,7 @@ from django.urls import path
 from . import views
 urlpatterns = [
     path('', views.JobView.as_view({
-        "post": "create_job"
+        "post": "create_job",
+        "get" : "get_job"
     })),
 ]
