@@ -27,6 +27,7 @@ class Job(models.Model):
     overview = models.CharField(max_length=1000, null=True, blank=True)
     todo = models.CharField(max_length=1000, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name="posted_jobs")
+    image  = models.ImageField(upload_to='avatars/', null=True, blank=True)
 
     class Meta:
         db_table = "job"
