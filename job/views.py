@@ -54,7 +54,11 @@ class JobApiView(ModelViewSet):
                 if job.exists():
                     serialized_data = JobSerializer(job.first(), many=False).data
                     serialized_data['user'] = {"username": job.first().user.email}
-                    serialized_data['image'] = request.build_absolute_uri(job.first().image.url)
+                    try:
+                        serialized_data['image'] = request.build_absolute_uri(job.first().image.url)
+                    except :
+                        serialized_data['image'] = None
+
                     return Response(create_response(False, Message.success.value, serialized_data))
             jobs = self.model.objects.all()
             if jobs.exists():
