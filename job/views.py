@@ -42,9 +42,6 @@ class JobView(ModelViewSet):
             return Response(create_response(True, Message.server_error.value, []))
 
 
-
-
-
 class JobApiView(ModelViewSet):
     authentication_classes = []
     permission_classes = [AllowAny]
@@ -52,6 +49,12 @@ class JobApiView(ModelViewSet):
 
     def get_job(self, request):
         try:
+            if request.query_params.get("id"):
+                job = self.model.objects.filter(id=request.query_params.get("id"))
+                if job.exists():
+                    serialized_data = JobSerializer(job, many=False).data
+                    serialized_data['user'] = {"username": job.user.email}
+                    return Response(create_response(False, Message.success.value, serialized_data))
             jobs = self.model.objects.all()
             if jobs.exists():
                 serialized_data = JobSerializer(jobs, many=True).data
