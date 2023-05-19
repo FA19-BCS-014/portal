@@ -53,7 +53,7 @@ class JobApiView(ModelViewSet):
                 job = self.model.objects.filter(id=request.query_params.get("id"))
                 if job.exists():
                     serialized_data = JobSerializer(job, many=False).data
-                    serialized_data['user'] = {"username": job.user.email}
+                    serialized_data['user'] = {"username": job.first().user.email}
                     return Response(create_response(False, Message.success.value, serialized_data))
             jobs = self.model.objects.all()
             if jobs.exists():
