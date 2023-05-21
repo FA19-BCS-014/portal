@@ -34,3 +34,19 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Application(models.Model):
+    name = models.CharField(max_length=300,null=True , blank=True)
+    phone = models.CharField(max_length=1000 , null=True , blank=True)
+    address = models.CharField(max_length=2000, null=True, blank=True)
+    msg = models.CharField(max_length=2000, null=True, blank=True)
+
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, null=True, blank=True, related_name="job_applications")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name="user_applications")
+
+    class Meta:
+        db_table = "application"
+
+    def __str__(self):
+        return self.name

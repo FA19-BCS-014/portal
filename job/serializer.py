@@ -11,4 +11,7 @@ class JobSerializer (ModelSerializer):
         model = Job
         fields = "__all__"
 
-
+class ApplicationSerializer (ModelSerializer):
+    class Meta :
+        model = Application
+        fields = "__all__"

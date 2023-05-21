@@ -70,3 +70,21 @@ class JobApiView(ModelViewSet):
         except Exception as e:
             print(e)
             return Response(create_response(True, Message.server_error.value, []))
+
+
+class ApplyView(ModelViewSet):
+    authentication_classes = []
+    model = Application
+
+    def application(self, request):
+        try:
+            serialized_data = ApplicationSerializer(data=request.data)
+            if serialized_data.is_valid():
+                serialized_data.save()
+                return Response(create_response(False, Message.success.value, serialized_data.data))
+
+            return Response(create_response(True, Message.try_with_correct_data.value, []))
+
+        except Exception as e:
+            print(e)
+            return Response(create_response(True, Message.server_error.value, []))
