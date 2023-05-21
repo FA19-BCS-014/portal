@@ -25,4 +25,8 @@ urlpatterns = [
     path('get-jobs', views.JobApiView.as_view({
         "get" : "get_job"
     })),
+
+    path('apply', views.ApplyView.as_view({
+        "post" : "application"
+    })),
 ]
